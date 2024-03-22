@@ -1,6 +1,58 @@
 # LightLicensingKit examples
 
-The complete [documentation](https://doc.masur.pw) at this moment is available only in russian - doc.masur.pw.
+The complete [API documentation](https://doc.masur.pw/docs/LicensingAPI) at this moment is available only in Russian language.
+
+## How to Build and Launch on Linux
+
+```sh
+cd '<llk root dir>'
+
+export INSTALL_PATH="<give some install path>"
+
+# Choose one of the types
+export BUILD_TYPE="RELEASE|RELWITHDEBINFO"
+
+export CMAKE_DEFAULTS="
+    -DLLK_ROOT_DIR='<full path to llk root dir>' \
+    -DCMAKE_INSTALL_PREFIX=${INSTALL_PATH} \
+    -DCMAKE_BUILD_TYPE=$BUILD_TYPE \
+    -DNLOHMAN_JSON_ROOT='<nlohmann json root>"
+
+mkdir build-examples-${BUILD_TYPE}
+cd build-examples-${BUILD_TYPE}
+
+cmake ../examples $(eval echo ${CMAKE_DEFAULTS})
+cmake --build . --config $BUILD_TYPE --target install
+
+mkdir data
+cp license.json data/license.json
+$ ./example
+```
+
+## How to Build and Launch on Windows
+
+```sh
+cd '<llk root dir>'
+
+SET INSTALL_PATH="<give some install path>"
+
+mkdir build-examples
+cd build-examples
+
+cmake ../examples ^
+    -DLLK_ROOT_DIR='<full path to llk root dir>' ^
+    -DCMAKE_INSTALL_PREFIX=${INSTALL_PATH} ^
+    -DNLOHMAN_JSON_ROOT='<nlohmann json root>
+
+cmake --build . --target install
+
+mkdir data
+cp license.json data/license.json
+./example.exe
+```
+
+> [!NOTE]
+> In this example we store the `license.json` and the `program key (license.l2c)` in the `data/` directory, but is not a prerequisite
 
 
 ### An example of `license.json`
@@ -14,66 +66,12 @@ The complete [documentation](https://doc.masur.pw) at this moment is available o
 }
 ```
 
-
-# How to build on Linux
-
-
-```sh
-cd '<llk root dir>'
-
-export INSTALL_PATH="<give some install path>"
-
-# Choose one of the types
-export BUILD_TYPE="RELEASE|RELWITHDEBINFO"
-
-export CMAKE_DEFAULTS="
-	-DLLK_ROOT_DIR='<full path to llk root dir>' \
-	-DCMAKE_INSTALL_PREFIX=${INSTALL_PATH} \
-	-DCMAKE_BUILD_TYPE=$BUILD_TYPE \
-	-DNLOHMAN_JSON_ROOT='<nlohmann json root>"
-
-mkdir build-examples-${BUILD_TYPE}
-cd build-examples-${BUILD_TYPE}
-
-cmake ../examples $(eval echo ${CMAKE_DEFAULTS})
-cmake --build . --config $BUILD_TYPE --target install
-
-### In this example we store the `license.json` and the `program key` in the `data/` directory,
-### But is not a prerequisite
-
-mkdir data
-# Copy the `license.json` into data/
-$ ./example
-```
-
-
-# How to build on Windows
-
-```sh
-cd '<llk root dir>'
-
-SET INSTALL_PATH="<give some install path>"
-
-mkdir build-examples
-cd build-examples
-
-cmake ../examples ^
-	-DLLK_ROOT_DIR='<full path to llk root dir>' ^
-	-DCMAKE_INSTALL_PREFIX=${INSTALL_PATH} ^
-	-DNLOHMAN_JSON_ROOT='<nlohmann json root>
-
-cmake --build . --target install
-
-
-
-
-### In this example we store the `license.json` and the `program key` in the `data/` directory,
-### But is not a prerequisite
-
-mkdir data
-# Copy the `license.json` into data/
-$ ./example
-```
+| Field                    | Description                                                                                                                                                |
+| :----------------------- |:---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| HostName                 | License activation server address. The default value is masur.pw, **replace only with backup server, and only in case the primary server is unresponsive** |
+| PathToSaveTheLicenseData | Local path to save the software program key (`license.l2c`)                                                                                                |
+| SerialNumber             | The serial number is displayed on the [Licenses](https://dev.masur.pw/orders) page                                                                         |
+| VendorID                 | Located at the top of the [Licenses](https://dev.masur.pw/orders) page                                                                                     |
 
 ### An example of output
 
@@ -124,8 +122,5 @@ FeatureLicenseType: Based on the duration for which the product is used
 llkFeatureCheck feature ID: 9823144, ErrorCode: The Feature not found
 ```
 
-
-
-
->**Note:**
+> [!NOTE]
 > In this example we are using [nlohmann json](https://github.com/nlohmann/json), for parsing and pretty visualization of some inputs and outputs.
