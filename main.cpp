@@ -59,7 +59,7 @@ int main() {
 
 {
 	char* rawLicenseInfo = nullptr;
-	const LLKStatus licenseInfoStatus = static_cast<LLKStatus>(llkGetLicenseInfo(&rawLicenseInfo));
+	const LLKStatus licenseInfoStatus = llkGetLicenseInfo(&rawLicenseInfo);
 
 	jsonLicenseInfo = json::parse(rawLicenseInfo);
 	std::cout << jsonLicenseInfo.dump(1) << std::endl;
@@ -71,23 +71,24 @@ int main() {
 	const json& featuresList = jsonLicenseInfo["Features"];
 	for (const auto& feature : featuresList) {
 		const uint32_t featureID = feature["ID"].get<uint32_t>();
-		const LLKStatus errorCode = static_cast<LLKStatus>(llkFeatureCheck(featureID));
+		const LLKStatus errorCode = llkFeatureCheck(featureID);
 		std::cout << "llkFeatureCheck feature ID: " << featureID << ", ErrorCode: " << llkStatusDescription(errorCode) << std::endl;
 
 		LLKFeatureLicenseType type = LLKFeatureLicenseType::LLK_UNKNOWN;
-		const LLKStatus getFeatureLicensingTypeStatus = static_cast<LLKStatus>(llkGetFeatureLicensingType(featureID, &type));
+		const LLKStatus getFeatureLicensingTypeStatus = llkGetFeatureLicensingType(featureID, &type);
 		std::cout << "FeatureLicenseType: " << LLKFeatureLicenseTypeDescription(type) << std::endl;
 	}
 
 {
 	const uint32_t nonExistentFeatureID = 9823144;
-	const LLKStatus errorCode = static_cast<LLKStatus>(llkFeatureCheck(nonExistentFeatureID));
+	const LLKStatus errorCode = llkFeatureCheck(nonExistentFeatureID);
 	std::cout << "llkFeatureCheck feature ID: " << nonExistentFeatureID << ", ErrorCode: " << llkStatusDescription(errorCode) << std::endl;
 }
 
 {
 	char* featureInfoJson = nullptr;
-	const LLKStatus llkGetFeatureInfoStatus = llkGetFeatureInfo(static_cast<uint32_t>(0), &featureInfoJson);
+	const uint32_t featureId = 0;
+	const LLKStatus llkGetFeatureInfoStatus = llkGetFeatureInfo(featureId, &featureInfoJson);
 	if (llkGetFeatureInfoStatus == LLKStatus::LLK_OK) {
 		std::cout << json::parse(featureInfoJson).dump(1) << std::endl;
 	}
