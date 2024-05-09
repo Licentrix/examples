@@ -1,6 +1,6 @@
 # LightLicensingKit examples
 
-The complete [API documentation](https://doc.masur.pw/docs/LicensingAPI) at this moment is available only in Russian language.
+The `Complete API documentation` is available at [https://doc.masur.pw/](https://doc.masur.pw/docs/LicensingAPI)
 
 ## How to Build and Launch on Linux
 

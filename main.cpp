@@ -31,9 +31,9 @@ int main() {
 
 	uint32_t llkVersionMajor = 0;
 	uint32_t llkVersionMinor = 0;
-	uint32_t versionRelease  = 0;
-	const LLKStatus getVersionStatus = llkGetVersion(&llkVersionMajor, &llkVersionMinor, &versionRelease);
-	std::cout << "API Version: " << llkVersionMajor << "." << llkVersionMinor << "." << versionRelease << std::endl;
+	uint32_t llkVersionRelease  = 0;
+	const LLKStatus getVersionStatus = llkGetVersion(&llkVersionMajor, &llkVersionMinor, &llkVersionRelease);
+	std::cout << "API Version: " << llkVersionMajor << "." << llkVersionMinor << "." << llkVersionRelease << std::endl;
 	
 	const std::string& vendorID = licenseConf["Licensing"]["VendorID"];
 	const std::string& serialNumber = licenseConf["Licensing"]["SerialNumber"];
