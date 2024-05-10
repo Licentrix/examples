@@ -1,6 +1,6 @@
 # LightLicensingKit examples
 
-The `Complete API documentation` is available at [https://doc.masur.pw/](https://doc.masur.pw/docs/LicensingAPI)
+The complete `API documentation` is available at [https://doc.masur.pw/](https://doc.masur.pw/)
 
 ## How to Build and Launch on Linux
 
