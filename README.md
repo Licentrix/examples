@@ -1,6 +1,6 @@
 # LightLicensingKit examples
 
-The complete `API documentation` is available at [https://doc.masur.pw/](https://doc.licentrix.tech/)
+The complete `API documentation` is available at [https://doc.licentrix.tech/](https://doc.licentrix.tech/)
 
 ## How to Build and Launch on Linux
 
@@ -59,19 +59,19 @@ cp license.json data/license.json
 
 ```JSON
 {
-  "HostName": "masur.pw",
+  "HostName": "licentrix.tech",
   "PathToSaveTheLicenseData": "./data/license.l2c",
   "SerialNumber": "989e79-140a9f1aw880-323b973g960d",
   "VendorID": "15cva7cyd4q0-a1f8t5d056b5"
 }
 ```
 
-| Field                    | Description                                                                                                                                                |
-| :----------------------- |:---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| HostName                 | License activation server address. The default value is masur.pw, **replace only with backup server, and only in case the primary server is unresponsive** |
-| PathToSaveTheLicenseData | Local path to save the software program key (`license.l2c`)                                                                                                |
-| SerialNumber             | The serial number is displayed on the [Licenses](https://dev.masur.pw/orders) page                                                                         |
-| VendorID                 | Located at the top of the [Licenses](https://dev.masur.pw/orders) page                                                                                     |
+| Field                    | Description                                                                                                                                                      |
+| :----------------------- |:---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| HostName                 | License activation server address. The default value is licentrix.tech, **replace only with backup server, and only in case the primary server is unresponsive** |
+| PathToSaveTheLicenseData | Local path to save the software program key (`license.l2c`)                                                                                                      |
+| SerialNumber             | The serial number is displayed on the [Licenses](https://dev.licentrix.tech/orders) page                                                                         |
+| VendorID                 | Located at the top of the [Licenses](https://dev.licentrix.tech/orders) page                                                                                     |
 
 ### An example of output
 
